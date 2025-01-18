@@ -94,6 +94,7 @@ ignore_texture_size = true
 stretch_mode = 3
 
 [node name="PointsLbl" type="Label" parent="TextureButton4"]
+layout_mode = 0
 offset_top = 17.0
 offset_right = 428.0
 offset_bottom = 96.0
@@ -122,6 +123,7 @@ ignore_texture_size = true
 stretch_mode = 3
 
 [node name="LeaderboardLbl" type="Label" parent="TextureButton5"]
+layout_mode = 0
 offset_top = 21.0
 offset_right = 448.0
 offset_bottom = 100.0
@@ -150,6 +152,7 @@ ignore_texture_size = true
 stretch_mode = 3
 
 [node name="CreatorsLbl" type="Label" parent="TextureButton6"]
+layout_mode = 0
 offset_top = 17.0
 offset_right = 428.0
 offset_bottom = 96.0

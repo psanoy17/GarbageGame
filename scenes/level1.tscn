@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b5dbgblffncpv"]
+[gd_scene load_steps=23 format=3 uid="uid://b5dbgblffncpv"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_p6uae"]
 [ext_resource type="Texture2D" uid="uid://3alwm13wfcct" path="res://assets/Backgrounds/Background_Asset2.PNG" id="2_p6eyw"]
@@ -15,6 +15,10 @@
 [ext_resource type="FontFile" uid="uid://5kanbd1bjglj" path="res://Ranyth_upperlower.ttf" id="13_gba3p"]
 [ext_resource type="Texture2D" uid="uid://dofcvcix0xjpg" path="res://assets/Buttons-Pop-up/UnclickedBack_Button.PNG" id="14_osujt"]
 [ext_resource type="Texture2D" uid="uid://byxi1073tyol3" path="res://assets/Buttons-Pop-up/ClickedBack_Button.PNG" id="15_ti15o"]
+[ext_resource type="Texture2D" uid="uid://bstx14ca771bt" path="res://assets/Panels/GameOver_Panel.PNG" id="16_rfprk"]
+[ext_resource type="Script" path="res://scenes/game_over_control.gd" id="16_rsfgs"]
+[ext_resource type="Texture2D" uid="uid://bdb82020guhlq" path="res://assets/Buttons-Pop-up/UnclickedLong_Button.PNG" id="17_0s8n7"]
+[ext_resource type="Texture2D" uid="uid://beyo6spvk5nn0" path="res://assets/Buttons-Pop-up/ClickedLong_Button.PNG" id="18_in1j8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s035w"]
 texture = ExtResource("2_p6eyw")
@@ -22,6 +26,9 @@ texture = ExtResource("2_p6eyw")
 [sub_resource type="LabelSettings" id="LabelSettings_2r2j8"]
 font_size = 70
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1u62v"]
+texture = ExtResource("16_rfprk")
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_p6uae")
@@ -122,4 +129,71 @@ grow_vertical = 0
 texture_normal = ExtResource("14_osujt")
 texture_pressed = ExtResource("15_ti15o")
 
+[node name="GameOverControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("16_rsfgs")
+
+[node name="GameOverPanel" type="Panel" parent="GameOverControl"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 228.0
+offset_top = 98.0
+offset_right = 1601.0
+offset_bottom = 810.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_1u62v")
+
+[node name="NewGameBtn" type="TextureButton" parent="GameOverControl/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.5
+offset_top = 166.5
+offset_right = 236.5
+offset_bottom = 252.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("17_0s8n7")
+texture_pressed = ExtResource("18_in1j8")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="NewGameLbl" type="Label" parent="GameOverControl/GameOverPanel/NewGameBtn"]
+offset_left = 24.0
+offset_top = 17.0
+offset_right = 420.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
+theme_override_fonts/font = ExtResource("13_gba3p")
+theme_override_font_sizes/font_size = 70
+text = "NEW GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackBtn" type="TextureButton" parent="GameOverControl/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 337.0
+offset_top = -223.0
+offset_right = 485.0
+offset_bottom = -72.0
+grow_vertical = 0
+texture_normal = ExtResource("14_osujt")
+texture_pressed = ExtResource("15_ti15o")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="GameOverControl/GameOverPanel/NewGameBtn" to="." method="_on_new_game_btn_pressed"]

@@ -71,8 +71,10 @@ func update_timer(delta: float) -> void:
 	
 	if time_left <= 0:
 		game_active = false
-		$GameOverLabel.text = "Game Over!\nFinal Score: " + str(score)
-		$GameOverLabel.show()
+		$GameOverControl.show_game_over(score)
+		# Hide the old game over label if it exists
+		if has_node("GameOverLabel"):
+			$GameOverLabel.hide()
 
 func update_indicator(delta: float) -> void:
 	if indicator_moving:
@@ -268,3 +270,29 @@ func populate_sorting_tray() -> void:
 func _on_back_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/press_start.tscn")
 	pass # Replace with function body.
+
+
+func _on_new_game_btn_pressed() -> void:
+	# Reset game state
+	score = 0
+	time_left = 60
+	game_active = true
+	current_index = 0
+	
+	# Reset UI
+	$ScoreLabel.text = "Score: 0"
+	$TimerLabel.text = "Time: 60"
+	
+	# Reset props and game elements
+	props.shuffle()
+	populate_placeholder()
+	populate_sorting_tray()
+	update_arrow_position()
+	
+	# Hide game over panel
+	$GameOverControl.hide_game_over()
+	
+	# Reset power bar
+	$PowerBarIndicator.position.x = power_bar_range.x
+	indicator_moving = false
+	can_throw = true
