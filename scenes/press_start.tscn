@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://lwf5widdihmj"]
+[gd_scene load_steps=12 format=3 uid="uid://lwf5widdihmj"]
 
 [ext_resource type="Texture2D" uid="uid://3alwm13wfcct" path="res://assets/Backgrounds/Background_Asset2.PNG" id="1_8yjgs"]
 [ext_resource type="Script" path="res://scenes/press_start.gd" id="1_py4og"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://byxi1073tyol3" path="res://assets/Buttons-Pop-up/ClickedBack_Button.PNG" id="5_pg07q"]
 [ext_resource type="Texture2D" uid="uid://bdb82020guhlq" path="res://assets/Buttons-Pop-up/UnclickedLong_Button.PNG" id="6_g7xgq"]
 [ext_resource type="Texture2D" uid="uid://beyo6spvk5nn0" path="res://assets/Buttons-Pop-up/ClickedLong_Button.PNG" id="7_a0dst"]
+[ext_resource type="FontFile" uid="uid://5kanbd1bjglj" path="res://Ranyth_upperlower.ttf" id="9_txmkf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_26sbf"]
 texture = ExtResource("1_8yjgs")
@@ -93,6 +94,18 @@ texture_pressed = ExtResource("7_a0dst")
 ignore_texture_size = true
 stretch_mode = 3
 
+[node name="RulesLbl" type="Label" parent="Background/Panel/TextureButton"]
+offset_left = 24.0
+offset_top = 17.0
+offset_right = 420.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
+theme_override_fonts/font = ExtResource("9_txmkf")
+theme_override_font_sizes/font_size = 70
+text = "TUTORIAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TextureButton2" type="TextureButton" parent="Background/Panel"]
 layout_mode = 1
 anchors_preset = 8
@@ -110,6 +123,18 @@ texture_normal = ExtResource("6_g7xgq")
 texture_pressed = ExtResource("7_a0dst")
 ignore_texture_size = true
 stretch_mode = 3
+
+[node name="RulesLbl" type="Label" parent="Background/Panel/TextureButton2"]
+offset_left = 24.0
+offset_top = 17.0
+offset_right = 420.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
+theme_override_fonts/font = ExtResource("9_txmkf")
+theme_override_font_sizes/font_size = 60
+text = "TRASH ROOKIE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureButton3" type="TextureButton" parent="Background/Panel"]
 layout_mode = 1
@@ -129,6 +154,18 @@ texture_pressed = ExtResource("7_a0dst")
 ignore_texture_size = true
 stretch_mode = 3
 
+[node name="RulesLbl" type="Label" parent="Background/Panel/TextureButton3"]
+offset_left = 24.0
+offset_top = 17.0
+offset_right = 420.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
+theme_override_fonts/font = ExtResource("9_txmkf")
+theme_override_font_sizes/font_size = 55
+text = "WASTE WARRIOR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TextureButton4" type="TextureButton" parent="Background/Panel"]
 layout_mode = 1
 anchors_preset = 8
@@ -147,5 +184,18 @@ texture_pressed = ExtResource("7_a0dst")
 ignore_texture_size = true
 stretch_mode = 3
 
+[node name="RulesLbl" type="Label" parent="Background/Panel/TextureButton4"]
+offset_left = 24.0
+offset_top = 17.0
+offset_right = 420.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
+theme_override_fonts/font = ExtResource("9_txmkf")
+theme_override_font_sizes/font_size = 60
+text = "GARBAGE GURU"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Background/Panel/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="Background/Panel/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Background/Panel/TextureButton2" to="." method="_on_texture_button_2_pressed"]

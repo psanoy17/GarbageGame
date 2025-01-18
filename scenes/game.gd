@@ -135,35 +135,40 @@ func _input(event: InputEvent) -> void:
 
 func check_throw_success() -> void:
 	var current_pos = $PowerBarIndicator.position.x
+	var is_good_power = current_pos >= green_zone_start and current_pos <= green_zone_end
 	
-	if current_pos >= green_zone_start and current_pos <= green_zone_end:
-		start_throw_animation()
-	elif current_pos < green_zone_start:
-		start_weak_throw_animation()  # Weak throw outside the bins
-	elif current_pos > green_zone_end:
-		start_strong_throw_animation()  # Strong throw outside the bins
+	if is_good_power:
+		start_throw_animation(true)  # Pass power accuracy
+	else:
+		# Wrong power, either weak or strong throw
+		if current_pos < green_zone_start:
+			start_weak_throw_animation()
+		else:
+			start_strong_throw_animation()
 
 	$PowerBarIndicator.position.x = power_bar_range.x
 	can_throw = true
 
-func start_throw_animation() -> void:
+func start_throw_animation(is_good_power: bool) -> void:
 	throwing = true
 	throw_progress = 0.0
 	throw_start_pos = $PlaceholderAsset.position
 	
 	for child in $PlaceholderAsset.get_children():
 		child.queue_free()
-		
-	# Create a temporary sprite for the garbage being thrown
+
 	var garbage_sprite = Sprite2D.new()
 	garbage_sprite.texture = props[current_index]["texture"]
 	garbage_sprite.position = throw_start_pos
-	garbage_sprite.rotation = 0  # Reset rotation
+	garbage_sprite.rotation = 0
 	garbage_sprite.name = "TemporaryGarbage"
 	add_child(garbage_sprite)
 	
 	var bins = $Bins.get_children()
 	throw_target_pos = bins[selected_bin].position
+	
+	# Store the power accuracy for scoring
+	garbage_sprite.set_meta("good_power", is_good_power)
 
 func start_weak_throw_animation() -> void:
 	throwing = true
@@ -173,16 +178,15 @@ func start_weak_throw_animation() -> void:
 	for child in $PlaceholderAsset.get_children():
 		child.queue_free()
 		
-	# Create a temporary sprite for the garbage being thrown
 	var garbage_sprite = Sprite2D.new()
 	garbage_sprite.texture = props[current_index]["texture"]
 	garbage_sprite.position = throw_start_pos
-	garbage_sprite.rotation = 0  # Reset rotation
+	garbage_sprite.rotation = 0
 	garbage_sprite.name = "TemporaryGarbage"
 	add_child(garbage_sprite)
 	
-	# Make the target position outside the bins, simulating a weak throw
-	throw_target_pos = Vector2(-100, throw_start_pos.y)  # Adjust this position
+	throw_target_pos = Vector2(-100, throw_start_pos.y)
+	garbage_sprite.set_meta("good_power", false)
 
 func start_strong_throw_animation() -> void:
 	throwing = true
@@ -192,51 +196,45 @@ func start_strong_throw_animation() -> void:
 	for child in $PlaceholderAsset.get_children():
 		child.queue_free()
 		
-	# Create a temporary sprite for the garbage being thrown
 	var garbage_sprite = Sprite2D.new()
 	garbage_sprite.texture = props[current_index]["texture"]
 	garbage_sprite.position = throw_start_pos
-	garbage_sprite.rotation = 0  # Reset rotation
+	garbage_sprite.rotation = 0
 	garbage_sprite.name = "TemporaryGarbage"
 	add_child(garbage_sprite)
 	
-	# Make the target position outside the bins, simulating a strong throw
-	throw_target_pos = Vector2(1500, throw_start_pos.y)  # Adjust this position
+	throw_target_pos = Vector2(1500, throw_start_pos.y)
+	garbage_sprite.set_meta("good_power", false)
 
 func complete_throw() -> void:
-	if current_index < props.size():
-		var prop_category = props[current_index]["category"]
-		var current_pos = $PowerBarIndicator.position.x
-		
-		# Check for scoring conditions based on the category and power zone
-		if selected_bin == prop_category and current_pos >= green_zone_start and current_pos <= green_zone_end:
-			score += 10  # Correct bin and correct power
-			print("Correct! Score: ", score)
-		elif selected_bin == prop_category:  # Right bin, but wrong power
-			score -= 0  # No penalty for incorrect power
-			print("Wrong power! Score: ", score)
-		elif current_pos >= green_zone_start and current_pos <= green_zone_end:  # Right power but wrong bin
-			score -= 5  # Wrong bin
-			print("Wrong bin! Score: ", score)
-		else:  # Wrong bin and wrong power
-			score -= 0  # No change in score
-			print("Neutral. Score: ", score)
-		
-		$ScoreLabel.text = "Score: " + str(score)
-		
-		current_index += 1
-		if current_index < props.size():
-			# Clean up the temporary garbage sprite
-			if has_node("TemporaryGarbage"):
-				get_node("TemporaryGarbage").queue_free()
-			
-			# Prepare for the next item
-			populate_placeholder()
-			populate_sorting_tray()
+	var prop_category = props[current_index]["category"]
+	var garbage_sprite = get_node("TemporaryGarbage")
+	var is_good_power = garbage_sprite.get_meta("good_power")
+	
+	if is_good_power:
+		if selected_bin == prop_category:
+			# Right bin, right power
+			score += 10
 		else:
-			game_active = false
-			$GameOverLabel.text = "You Win!\nFinal Score: " + str(score)
-			$GameOverLabel.show()
+			# Wrong bin, right power
+			score -= 5
+	else:
+		# Wrong power, regardless of bin
+		score += 0
+	
+	$ScoreLabel.text = "Score: " + str(score)
+	
+	current_index += 1
+	if current_index < props.size():
+		if has_node("TemporaryGarbage"):
+			get_node("TemporaryGarbage").queue_free()
+		
+		populate_placeholder()
+		populate_sorting_tray()
+	else:
+		game_active = false
+		$GameOverLabel.text = "You Win!\nFinal Score: " + str(score)
+		$GameOverLabel.show()
 
 func update_arrow_position() -> void:
 	var bins = $Bins.get_children()
