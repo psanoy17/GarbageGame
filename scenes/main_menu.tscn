@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=3 uid="uid://n2eairimd7e4"]
+
+[ext_resource type="Texture2D" uid="uid://bud22fx7rwc17" path="res://assets/Backgrounds/Background_Asset.PNG" id="1_c6xeb"]
+[ext_resource type="Texture2D" uid="uid://bq32sryvi7scx" path="res://assets/Buttons-Pop-up/UnclickedStart_Button.PNG" id="1_d5bub"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_pttmk"]
+[ext_resource type="Texture2D" uid="uid://bucancms3jd46" path="res://assets/Buttons-Pop-up/ClickedStart_Button.PNG" id="2_4oa1m"]
+[ext_resource type="Texture2D" uid="uid://vbav1nmjp7v5" path="res://assets/Title_Asset.PNG" id="2_76n2f"]
+[ext_resource type="Texture2D" uid="uid://dlw7khwf3g3nj" path="res://assets/Buttons-Pop-up/UnclickedAbout_Button.PNG" id="3_6li7k"]
+[ext_resource type="Texture2D" uid="uid://uol80hmwhapi" path="res://assets/Buttons-Pop-up/ClickedAbout_Button.PNG" id="4_t0era"]
+[ext_resource type="Texture2D" uid="uid://cx67il2owaj3d" path="res://assets/Buttons-Pop-up/UnclickedSound_Button.PNG" id="5_kw10t"]
+[ext_resource type="Texture2D" uid="uid://bupr1p1vdm23f" path="res://assets/Buttons-Pop-up/ClickedSound_Button.PNG" id="6_1h7o6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ikhyl"]
+texture = ExtResource("1_c6xeb")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchor_right = 1.37
+anchor_bottom = 1.458
+offset_left = -1.0
+offset_top = -1.0
+offset_right = -706.4
+offset_bottom = -491.64
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pttmk")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ikhyl")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -506.0
+offset_top = -449.0
+offset_right = 506.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_76n2f")
+
+[node name="PressStart" type="TextureButton" parent="Panel"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -11.0
+offset_right = 200.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("1_d5bub")
+texture_pressed = ExtResource("2_4oa1m")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="AboutGame" type="TextureButton" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.5
+offset_top = 127.0
+offset_right = 198.5
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("3_6li7k")
+texture_pressed = ExtResource("4_t0era")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="Volume" type="TextureButton" parent="Panel"]
+layout_mode = 2
+offset_left = 850.0
+offset_top = 764.0
+offset_right = 1062.0
+offset_bottom = 966.0
+size_flags_vertical = 3
+texture_normal = ExtResource("5_kw10t")
+texture_pressed = ExtResource("6_1h7o6")
+ignore_texture_size = true
+stretch_mode = 4
+
+[connection signal="pressed" from="Panel/PressStart" to="." method="_on_press_start_pressed"]
