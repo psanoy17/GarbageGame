@@ -281,3 +281,6 @@ offset_top = 152.0
 offset_right = 1513.0
 offset_bottom = 770.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_on88h")
+
+[connection signal="pressed" from="GameOverControl/GameOverPanel/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
+[connection signal="pressed" from="YouWinControl/YouWinPanel/NewGameBtn" to="." method="_on_new_game_btn_pressed"]

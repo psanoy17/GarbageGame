@@ -98,6 +98,10 @@ z_index = 1
 position = Vector2(359, 979)
 texture = ExtResource("11_ihvpl")
 
+[node name="PowerBar" type="Sprite2D" parent="."]
+position = Vector2(537, 981)
+texture = ExtResource("21_kvs8y")
+
 [node name="ScoreLabel" type="Label" parent="."]
 offset_left = 45.0
 offset_top = 34.0
@@ -278,6 +282,5 @@ offset_right = 1513.0
 offset_bottom = 770.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ioq7b")
 
-[node name="HardPowerBarAsset" type="Sprite2D" parent="."]
-position = Vector2(537, 981)
-texture = ExtResource("21_kvs8y")
+[connection signal="pressed" from="GameOverControl/GameOverPanel/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
+[connection signal="pressed" from="YouWinControl/YouWinPanel/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
