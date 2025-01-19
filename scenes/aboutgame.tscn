@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4l00nn1my8ox"]
+[gd_scene load_steps=15 format=3 uid="uid://b4l00nn1my8ox"]
 
 [ext_resource type="Script" path="res://scenes/aboutgame.gd" id="1_6vbga"]
 [ext_resource type="Texture2D" uid="uid://3alwm13wfcct" path="res://assets/Backgrounds/Background_Asset2.PNG" id="1_ctqp3"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://beyo6spvk5nn0" path="res://assets/Buttons-Pop-up/ClickedLong_Button.PNG" id="5_13v7r"]
 [ext_resource type="FontFile" uid="uid://5kanbd1bjglj" path="res://Ranyth_upperlower.ttf" id="6_1xism"]
 [ext_resource type="Texture2D" uid="uid://bs77ce7buldif" path="res://assets/Panels/BigSquare_Panel.PNG" id="7_ekhji"]
+[ext_resource type="Texture2D" uid="uid://vbav1nmjp7v5" path="res://assets/Title_Asset.PNG" id="9_ktqp5"]
+[ext_resource type="Texture2D" uid="uid://bikw8ol8vgfkl" path="res://assets/Props-Objects/Recyclable_Bin.PNG" id="10_o7hg1"]
+[ext_resource type="Texture2D" uid="uid://dq7w3ydniulc8" path="res://assets/Props-Objects/Residual_Bin.PNG" id="11_8kgje"]
+[ext_resource type="Texture2D" uid="uid://c87nvripx1ldl" path="res://assets/Props-Objects/Hazardous_Bin.PNG" id="12_qo1q6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qpjxb"]
 texture = ExtResource("1_ctqp3")
@@ -47,7 +51,7 @@ grow_vertical = 0
 texture_normal = ExtResource("2_q808y")
 texture_pressed = ExtResource("3_4ng5l")
 
-[node name="RulesBtn" type="TextureButton" parent="."]
+[node name="MechanicsBtn" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,9 +59,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -802.0
-offset_top = -441.0
+offset_top = -440.0
 offset_right = -354.0
-offset_bottom = -362.0
+offset_bottom = -361.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_mnm74")
@@ -65,19 +69,20 @@ texture_pressed = ExtResource("5_13v7r")
 ignore_texture_size = true
 stretch_mode = 3
 
-[node name="RulesLbl" type="Label" parent="RulesBtn"]
+[node name="MechanicsLbl" type="Label" parent="MechanicsBtn"]
 layout_mode = 0
+offset_left = 47.0
 offset_top = 15.0
-offset_right = 428.0
+offset_right = 403.0
 offset_bottom = 94.0
 theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
 theme_override_fonts/font = ExtResource("6_1xism")
 theme_override_font_sizes/font_size = 70
-text = "RULES"
+text = "MECHANICS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton4" type="TextureButton" parent="."]
+[node name="ControlBtn" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -85,9 +90,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -802.0
-offset_top = -292.0
+offset_top = -290.0
 offset_right = -354.0
-offset_bottom = -213.0
+offset_bottom = -211.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_mnm74")
@@ -95,10 +100,40 @@ texture_pressed = ExtResource("5_13v7r")
 ignore_texture_size = true
 stretch_mode = 3
 
-[node name="PointsLbl" type="Label" parent="TextureButton4"]
+[node name="ControlLbl" type="Label" parent="ControlBtn"]
 layout_mode = 0
+offset_left = 86.0
 offset_top = 17.0
-offset_right = 428.0
+offset_right = 364.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
+theme_override_fonts/font = ExtResource("6_1xism")
+theme_override_font_sizes/font_size = 70
+text = "CONTROL"
+horizontal_alignment = 1
+
+[node name="PointsBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -802.0
+offset_top = -140.0
+offset_right = -354.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_mnm74")
+texture_pressed = ExtResource("5_13v7r")
+ignore_texture_size = true
+stretch_mode = 3
+
+[node name="PointsLbl" type="Label" parent="PointsBtn"]
+offset_left = 86.0
+offset_top = 17.0
+offset_right = 364.0
 offset_bottom = 96.0
 theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
 theme_override_fonts/font = ExtResource("6_1xism")
@@ -106,7 +141,7 @@ theme_override_font_sizes/font_size = 70
 text = "POINTS"
 horizontal_alignment = 1
 
-[node name="TextureButton5" type="TextureButton" parent="."]
+[node name="TrashBtn" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -114,9 +149,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -802.0
-offset_top = -142.0
+offset_top = 10.0
 offset_right = -354.0
-offset_bottom = -63.0
+offset_bottom = 89.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_mnm74")
@@ -124,51 +159,87 @@ texture_pressed = ExtResource("5_13v7r")
 ignore_texture_size = true
 stretch_mode = 3
 
-[node name="LeaderboardLbl" type="Label" parent="TextureButton5"]
+[node name="TrashLbl" type="Label" parent="TrashBtn"]
 layout_mode = 0
-offset_top = 21.0
-offset_right = 448.0
-offset_bottom = 100.0
-theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
-theme_override_fonts/font = ExtResource("6_1xism")
-theme_override_font_sizes/font_size = 60
-text = "LEADERBOARD"
-horizontal_alignment = 1
-
-[node name="TextureButton6" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -802.0
-offset_top = 3.0
-offset_right = -354.0
-offset_bottom = 82.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("4_mnm74")
-texture_pressed = ExtResource("5_13v7r")
-ignore_texture_size = true
-stretch_mode = 3
-
-[node name="CreatorsLbl" type="Label" parent="TextureButton6"]
-layout_mode = 0
+offset_left = 9.0
 offset_top = 17.0
-offset_right = 428.0
+offset_right = 437.0
 offset_bottom = 96.0
 theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
 theme_override_fonts/font = ExtResource("6_1xism")
 theme_override_font_sizes/font_size = 70
-text = "CREATORS"
+text = "TRASH DATA"
 horizontal_alignment = 1
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
+[node name="MechanicsPanel" type="Panel" parent="."]
 offset_left = 636.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_iohbd")
+
+[node name="Title" type="TextureRect" parent="MechanicsPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -316.0
+offset_top = -40.0
+offset_right = 304.0
+offset_bottom = 329.0
+grow_horizontal = 2
+texture = ExtResource("9_ktqp5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MechanicsPanel"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 221.0
+offset_right = 1119.0
+offset_bottom = 263.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_1xism")
+theme_override_font_sizes/font_size = 41
+text = "Goal of the Game:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MechanicsPanel"]
+offset_left = 197.0
+offset_top = 286.0
+offset_right = 1097.0
+offset_bottom = 418.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_1xism")
+theme_override_font_sizes/font_size = 41
+text = "To segregate and categorize the different 	types of trash into its appropriate waste type."
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="MechanicsPanel"]
+offset_left = 177.0
+offset_top = 417.0
+offset_right = 1119.0
+offset_bottom = 459.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_1xism")
+theme_override_font_sizes/font_size = 41
+text = "1. Identify trash type"
+horizontal_alignment = 1
+
+[node name="RecyclableBin" type="Sprite2D" parent="."]
+position = Vector2(880.187, 550)
+scale = Vector2(0.431315, 0.453776)
+texture = ExtResource("10_o7hg1")
+
+[node name="ResidualBin" type="Sprite2D" parent="."]
+position = Vector2(880.125, 698.125)
+scale = Vector2(0.426432, 0.458984)
+texture = ExtResource("11_8kgje")
+
+[node name="HazardousBin" type="Sprite2D" parent="."]
+position = Vector2(880.438, 847)
+scale = Vector2(0.430013, 0.454427)
+texture = ExtResource("12_qo1q6")
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
