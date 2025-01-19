@@ -32,8 +32,8 @@ var indicator_moving = false
 var indicator_direction = 1
 var indicator_speed = 300
 var power_bar_range = Vector2(300, 780)
-var green_zone_start = 460
-var green_zone_end = 640
+var green_zone_start = 505
+var green_zone_end = 595
 var can_throw = true
 
 # Game state variables

@@ -95,15 +95,14 @@ ignore_texture_size = true
 stretch_mode = 3
 
 [node name="RulesLbl" type="Label" parent="Background/Panel/TextureButton"]
-layout_mode = 0
 offset_left = 24.0
 offset_top = 17.0
 offset_right = 420.0
 offset_bottom = 96.0
 theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
 theme_override_fonts/font = ExtResource("9_txmkf")
-theme_override_font_sizes/font_size = 70
-text = "TUTORIAL"
+theme_override_font_sizes/font_size = 60
+text = "TRASH ROOKIE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -126,15 +125,14 @@ ignore_texture_size = true
 stretch_mode = 3
 
 [node name="RulesLbl" type="Label" parent="Background/Panel/TextureButton2"]
-layout_mode = 0
 offset_left = 24.0
 offset_top = 17.0
 offset_right = 420.0
 offset_bottom = 96.0
 theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
 theme_override_fonts/font = ExtResource("9_txmkf")
-theme_override_font_sizes/font_size = 60
-text = "TRASH ROOKIE"
+theme_override_font_sizes/font_size = 55
+text = "WASTE WARRIOR"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -157,15 +155,14 @@ ignore_texture_size = true
 stretch_mode = 3
 
 [node name="RulesLbl" type="Label" parent="Background/Panel/TextureButton3"]
-layout_mode = 0
 offset_left = 24.0
 offset_top = 17.0
 offset_right = 420.0
 offset_bottom = 96.0
 theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
 theme_override_fonts/font = ExtResource("9_txmkf")
-theme_override_font_sizes/font_size = 55
-text = "WASTE WARRIOR"
+theme_override_font_sizes/font_size = 60
+text = "GARBAGE GURU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -196,10 +193,10 @@ offset_bottom = 96.0
 theme_override_colors/font_color = Color(0.784314, 0.835294, 0.360784, 1)
 theme_override_fonts/font = ExtResource("9_txmkf")
 theme_override_font_sizes/font_size = 60
-text = "GARBAGE GURU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="Background/Panel/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="Background/Panel/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Background/Panel/TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="Background/Panel/TextureButton3" to="." method="_on_texture_button_3_pressed"]

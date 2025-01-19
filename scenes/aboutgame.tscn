@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4l00nn1my8ox"]
+[gd_scene load_steps=11 format=3 uid="uid://b4l00nn1my8ox"]
 
+[ext_resource type="Script" path="res://scenes/aboutgame.gd" id="1_6vbga"]
 [ext_resource type="Texture2D" uid="uid://3alwm13wfcct" path="res://assets/Backgrounds/Background_Asset2.PNG" id="1_ctqp3"]
 [ext_resource type="Texture2D" uid="uid://dofcvcix0xjpg" path="res://assets/Buttons-Pop-up/UnclickedBack_Button.PNG" id="2_q808y"]
 [ext_resource type="Texture2D" uid="uid://byxi1073tyol3" path="res://assets/Buttons-Pop-up/ClickedBack_Button.PNG" id="3_4ng5l"]
@@ -21,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6vbga")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 1
@@ -168,3 +170,5 @@ offset_left = 636.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_iohbd")
+
+[connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
