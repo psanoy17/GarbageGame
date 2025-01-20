@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bw73ix3acj4kg"]
+[gd_scene load_steps=28 format=3 uid="uid://bw73ix3acj4kg"]
 
 [ext_resource type="Script" path="res://level_2.gd" id="1_mgyun"]
 [ext_resource type="Texture2D" uid="uid://3alwm13wfcct" path="res://assets/Backgrounds/Background_Asset2.PNG" id="2_abrvs"]
@@ -35,8 +35,12 @@ texture = ExtResource("16_welyk")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fnhtg"]
 texture = ExtResource("19_t6658")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_on88h"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mhq2e"]
 texture = ExtResource("20_g6q26")
+
+[sub_resource type="LabelSettings" id="LabelSettings_atsr8"]
+font_size = 105
+font_color = Color(0, 0, 0, 1)
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_mgyun")
@@ -179,6 +183,7 @@ ignore_texture_size = true
 stretch_mode = 3
 
 [node name="NewGameLbl" type="Label" parent="GameOverControl/GameOverPanel/NewGameBtn"]
+layout_mode = 0
 offset_left = 24.0
 offset_top = 17.0
 offset_right = 420.0
@@ -255,6 +260,7 @@ ignore_texture_size = true
 stretch_mode = 3
 
 [node name="NewGameLbl" type="Label" parent="YouWinControl/YouWinPanel/NewGameBtn"]
+layout_mode = 0
 offset_left = 24.0
 offset_top = 17.0
 offset_right = 420.0
@@ -266,21 +272,53 @@ text = "NEW GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ObjControl" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
+[node name="ObjPanel" type="Panel" parent="."]
+offset_left = 396.0
+offset_top = 332.0
+offset_right = 1481.0
+offset_bottom = 732.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mhq2e")
+
+[node name="TitleLbl" type="Label" parent="ObjPanel"]
+offset_left = 81.0
+offset_top = 34.0
+offset_right = 1002.0
+offset_bottom = 221.0
+theme_override_colors/font_color = Color(0.298039, 0.282353, 0.278431, 1)
+theme_override_fonts/font = ExtResource("12_8dhtp")
+theme_override_font_sizes/font_size = 8
+text = "WASTE WARRIOR"
+label_settings = SubResource("LabelSettings_atsr8")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ObjLbl" type="Label" parent="ObjPanel"]
+offset_left = 229.0
+offset_top = 194.0
+offset_right = 490.0
+offset_bottom = 252.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_8dhtp")
+theme_override_font_sizes/font_size = 46
+text = "Objective"
+autowrap_mode = 3
+
+[node name="ObjLbl2" type="Label" parent="ObjPanel"]
+offset_left = 218.0
+offset_top = 252.0
+offset_right = 897.0
+offset_bottom = 329.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_8dhtp")
+theme_override_font_sizes/font_size = 31
+text = "To win this round, accumulate 100 points within the given time"
+autowrap_mode = 3
+
+[node name="TextureButton" type="TextureButton" parent="ObjPanel"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="ObjPanel" type="Panel" parent="ObjControl"]
-visible = false
-layout_mode = 0
-offset_left = 411.0
-offset_top = 152.0
-offset_right = 1513.0
-offset_bottom = 770.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_on88h")
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="GameOverControl/GameOverPanel/NewGameBtn" to="." method="_on_new_game_btn_pressed"]

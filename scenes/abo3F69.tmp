@@ -432,7 +432,6 @@ text = "Check the control panel, to learn how to navigate when choosing garbage 
 autowrap_mode = 3
 
 [node name="MechanicsNextBtn2" type="TextureButton" parent="MechanicsPanel2"]
-layout_mode = 0
 offset_left = 1061.0
 offset_top = 914.0
 offset_right = 1196.0
@@ -444,7 +443,6 @@ stretch_mode = 0
 flip_h = true
 
 [node name="MechanicsPrevBtn" type="TextureButton" parent="MechanicsPanel2"]
-layout_mode = 0
 offset_left = 123.0
 offset_top = 914.0
 offset_right = 258.0
@@ -575,7 +573,6 @@ text = "Power Bar"
 autowrap_mode = 3
 
 [node name="MechanicsPrevBtn2" type="TextureButton" parent="MechanicsPanel3"]
-layout_mode = 0
 offset_left = 123.0
 offset_top = 914.0
 offset_right = 258.0
@@ -1106,7 +1103,6 @@ offset_bottom = 618.0
 texture = ExtResource("21_pfka1")
 
 [node name="TrashNextBtn" type="TextureButton" parent="TrashPanel"]
-layout_mode = 0
 offset_left = 1061.0
 offset_top = 914.0
 offset_right = 1196.0
@@ -1259,7 +1255,6 @@ text = "HAZARDOUS"
 autowrap_mode = 3
 
 [node name="TrashPrevBtn" type="TextureButton" parent="TrashPanel2"]
-layout_mode = 0
 offset_left = 123.0
 offset_top = 914.0
 offset_right = 258.0
