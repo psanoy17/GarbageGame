@@ -38,16 +38,16 @@ var can_throw = true
 
 # Game state variables
 var score = 0
-var time_left = 60  # 60 seconds game time
+var time_left = 60  
 var game_active = true
 var throwing = false
 var throw_start_pos = Vector2.ZERO
 var throw_target_pos = Vector2.ZERO
 var throw_progress = 0.0
-var throw_duration = 0.8  # Increased for smoother animation
+var throw_duration = 0.8 
 
 func _ready() -> void:
-	randomize_next_item()  # Shuffle items at the start
+	randomize_next_item()
 	populate_placeholder()
 	populate_sorting_tray()
 	update_arrow_position()
@@ -57,6 +57,20 @@ func _ready() -> void:
 	# Set initial position of placeholder
 	$PlaceholderAsset.position = Vector2(950, 950)
 	throw_start_pos = $PlaceholderAsset.position
+	
+	$ObjPanel.show()
+	
+	disable_game_controls()
+
+func disable_game_controls() -> void:
+	can_throw = false
+	game_active = false
+	indicator_moving = false
+
+func enable_game_controls() -> void:
+	can_throw = true
+	game_active = true
+	indicator_moving = false
 
 func _process(delta: float) -> void:
 	if game_active:
@@ -210,6 +224,7 @@ func _on_back_btn_pressed() -> void:
 
 
 func _on_new_game_btn_pressed() -> void:
+	$ObjPanel.show()
 	# Reset game state
 	score = 0
 	time_left = 60
@@ -243,3 +258,20 @@ func _on_new_game_btn_pressed() -> void:
 	$PowerBarIndicator.position.x = power_bar_range.x
 	indicator_moving = false
 	can_throw = true
+	
+	disable_game_controls()
+
+
+func _on_clicked_btn_pressed() -> void:
+	# Hide the objective panel
+	$ObjPanel.hide()
+	
+	# Enable game controls
+	enable_game_controls()
+	
+	# Reset the game state
+	score = 0
+	time_left = 60
+	$ScoreLabel.text = "Score: 0"
+	$TimerLabel.text = "Time: 60"
+	pass # Replace with function body.

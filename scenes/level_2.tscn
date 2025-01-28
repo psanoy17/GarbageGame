@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bw73ix3acj4kg"]
+[gd_scene load_steps=30 format=3 uid="uid://bw73ix3acj4kg"]
 
 [ext_resource type="Script" path="res://level_2.gd" id="1_mgyun"]
 [ext_resource type="Texture2D" uid="uid://3alwm13wfcct" path="res://assets/Backgrounds/Background_Asset2.PNG" id="2_abrvs"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://bggm1meqvn4j4" path="res://assets/Panels/YouWin_Panel.PNG" id="19_t6658"]
 [ext_resource type="Texture2D" uid="uid://cxwy5y6cidbn" path="res://assets/Panels/BigRectangle_Panel.PNG" id="20_g6q26"]
 [ext_resource type="Texture2D" uid="uid://d0mkyqptfjk0q" path="res://assets/Heads-up Display/MediumPowerBar_Asset.PNG" id="21_sg42l"]
+[ext_resource type="Texture2D" uid="uid://bus1qfn7v0e7k" path="res://assets/Buttons-Pop-up/UnclickedCheck_Button (1).PNG" id="22_iaa2a"]
+[ext_resource type="Texture2D" uid="uid://cdwfhdjudly30" path="res://assets/Buttons-Pop-up/ClickedCheck_Button (1).PNG" id="23_t3rk7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_clg0w"]
 texture = ExtResource("2_abrvs")
@@ -280,6 +282,7 @@ offset_bottom = 732.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_mhq2e")
 
 [node name="TitleLbl" type="Label" parent="ObjPanel"]
+layout_mode = 0
 offset_left = 81.0
 offset_top = 34.0
 offset_right = 1002.0
@@ -294,6 +297,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="ObjLbl" type="Label" parent="ObjPanel"]
+layout_mode = 0
 offset_left = 229.0
 offset_top = 194.0
 offset_right = 490.0
@@ -305,6 +309,7 @@ text = "Objective"
 autowrap_mode = 3
 
 [node name="ObjLbl2" type="Label" parent="ObjPanel"]
+layout_mode = 0
 offset_left = 218.0
 offset_top = 252.0
 offset_right = 897.0
@@ -315,13 +320,20 @@ theme_override_font_sizes/font_size = 31
 text = "To win this round, accumulate 100 points within the given time"
 autowrap_mode = 3
 
-[node name="TextureButton" type="TextureButton" parent="ObjPanel"]
+[node name="ClickedBtn" type="TextureButton" parent="ObjPanel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 910.0
+offset_top = 279.0
+offset_right = 1064.0
+offset_bottom = 409.0
+texture_normal = ExtResource("22_iaa2a")
+texture_pressed = ExtResource("23_t3rk7")
+ignore_texture_size = true
+stretch_mode = 0
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="GameOverControl/GameOverPanel/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
 [connection signal="pressed" from="GameOverControl/GameOverPanel/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="YouWinControl/YouWinPanel/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="YouWinControl/YouWinPanel/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
+[connection signal="pressed" from="ObjPanel/ClickedBtn" to="." method="_on_clicked_btn_pressed"]

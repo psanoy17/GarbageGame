@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://n2eairimd7e4"]
+[gd_scene load_steps=13 format=3 uid="uid://n2eairimd7e4"]
 
 [ext_resource type="Texture2D" uid="uid://bud22fx7rwc17" path="res://assets/Backgrounds/Background_Asset.PNG" id="1_c6xeb"]
 [ext_resource type="Texture2D" uid="uid://bq32sryvi7scx" path="res://assets/Buttons-Pop-up/UnclickedStart_Button.PNG" id="1_d5bub"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://uol80hmwhapi" path="res://assets/Buttons-Pop-up/ClickedAbout_Button.PNG" id="4_t0era"]
 [ext_resource type="Texture2D" uid="uid://cx67il2owaj3d" path="res://assets/Buttons-Pop-up/UnclickedSound_Button.PNG" id="5_kw10t"]
 [ext_resource type="Texture2D" uid="uid://bupr1p1vdm23f" path="res://assets/Buttons-Pop-up/ClickedSound_Button.PNG" id="6_1h7o6"]
+[ext_resource type="Texture2D" uid="uid://psxwewl647m8" path="res://assets/Buttons-Pop-up/UnclickedExit_Button.PNG" id="10_3fra2"]
+[ext_resource type="Texture2D" uid="uid://b8layd8jpfe5i" path="res://assets/Buttons-Pop-up/ClickedExit_Button.PNG" id="11_nbomt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ikhyl"]
 texture = ExtResource("1_c6xeb")
@@ -90,15 +92,25 @@ stretch_mode = 3
 
 [node name="Volume" type="TextureButton" parent="Panel"]
 layout_mode = 2
-offset_left = 850.0
-offset_top = 764.0
-offset_right = 1062.0
-offset_bottom = 966.0
+offset_left = 856.0
+offset_top = 885.0
+offset_right = 1068.0
+offset_bottom = 1087.0
 size_flags_vertical = 3
 texture_normal = ExtResource("5_kw10t")
 texture_pressed = ExtResource("6_1h7o6")
 ignore_texture_size = true
 stretch_mode = 4
 
+[node name="Exit" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 735.0
+offset_top = 718.0
+offset_right = 1183.0
+offset_bottom = 942.0
+texture_normal = ExtResource("10_3fra2")
+texture_pressed = ExtResource("11_nbomt")
+
 [connection signal="pressed" from="Panel/PressStart" to="." method="_on_press_start_pressed"]
 [connection signal="pressed" from="Panel/AboutGame" to="." method="_on_about_game_pressed"]
+[connection signal="pressed" from="Panel/Exit" to="." method="_on_exit_pressed"]
