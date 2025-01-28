@@ -7,7 +7,7 @@ func _ready():
 	# Hide panel at start
 	game_over_panel.hide()
 
-func show_game_over(final_score: int):
+func show_game_over():
 	# Show panel with final score
 	game_over_panel.show()
 	

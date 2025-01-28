@@ -45,8 +45,11 @@ var throw_start_pos = Vector2.ZERO
 var throw_target_pos = Vector2.ZERO
 var throw_progress = 0.0
 var throw_duration = 0.8 
+var is_paused = false
+var blur_effect
 
 func _ready() -> void:
+	blur_effect = $ColorRect
 	randomize_next_item()
 	populate_placeholder()
 	populate_sorting_tray()
@@ -61,7 +64,22 @@ func _ready() -> void:
 	$ObjPanel.show()
 	
 	disable_game_controls()
+	
+	blur_effect = $ColorRect	
+	blur_effect.visible = true
 
+func toggle_pause():
+	is_paused = !is_paused
+	if is_paused:
+		game_active = false
+		blur_effect.visible = true
+		$PausePanel.show()
+		$PausePanel/ScoreLabel.text = "Score: " + str(score) + "/100"
+	else:
+		game_active = true
+		blur_effect.visible = false
+		$PausePanel.hide()
+		
 func disable_game_controls() -> void:
 	can_throw = false
 	game_active = false
@@ -119,6 +137,9 @@ func update_throw_animation(delta: float) -> void:
 			garbage_sprite.rotation = t * 10
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):  # This handles Esc key
+		toggle_pause()
+		return
 	if not game_active:
 		return
 	if event.is_action_pressed("ui_left"):
@@ -274,4 +295,16 @@ func _on_clicked_btn_pressed() -> void:
 	time_left = 60
 	$ScoreLabel.text = "Score: 0"
 	$TimerLabel.text = "Time: 60"
+	
+	var blur_effect = $ColorRect
+	
+	blur_effect.visible = false
+	pass # Replace with function body.
+
+func _on_pause_btn_pressed() -> void:
+	toggle_pause()
+	pass # Replace with function body.
+
+func _on_resume_btn_pressed() -> void:
+	toggle_pause()
 	pass # Replace with function body.
