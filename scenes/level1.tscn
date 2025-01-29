@@ -477,3 +477,4 @@ stretch_mode = 0
 [connection signal="pressed" from="ObjPanel/ClickedBtn" to="." method="_on_clicked_btn_pressed"]
 [connection signal="pressed" from="PausePanel/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="PausePanel/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="PausePanel/RetryBtn" to="." method="_on_retry_btn_pressed"]

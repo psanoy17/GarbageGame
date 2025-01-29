@@ -310,3 +310,8 @@ func _on_resume_btn_pressed() -> void:
 func _on_pause_btn_pressed() -> void:
 	toggle_pause()
 	pass # Replace with function body.
+
+func _on_retry_btn_pressed() -> void:
+	$PausePanel.hide()
+	_on_new_game_btn_pressed()
+	pass # Replace with function body.
