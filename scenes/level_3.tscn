@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://d1akofy8wfq7d"]
+[gd_scene load_steps=41 format=3 uid="uid://d1akofy8wfq7d"]
 
 [ext_resource type="Script" path="res://level_3.gd" id="1_gv33k"]
 [ext_resource type="Texture2D" uid="uid://3alwm13wfcct" path="res://assets/Backgrounds/Background_Asset2.PNG" id="2_tejya"]
@@ -14,7 +14,6 @@
 [ext_resource type="FontFile" uid="uid://5kanbd1bjglj" path="res://Ranyth_upperlower.ttf" id="12_krnv7"]
 [ext_resource type="Texture2D" uid="uid://dofcvcix0xjpg" path="res://assets/Buttons-Pop-up/UnclickedBack_Button.PNG" id="13_x8nps"]
 [ext_resource type="Texture2D" uid="uid://byxi1073tyol3" path="res://assets/Buttons-Pop-up/ClickedBack_Button.PNG" id="14_xoj2h"]
-[ext_resource type="Script" path="res://scenes/game_over_control.gd" id="15_7j6vf"]
 [ext_resource type="Texture2D" uid="uid://bstx14ca771bt" path="res://assets/Panels/GameOver_Panel.PNG" id="16_is6sk"]
 [ext_resource type="Texture2D" uid="uid://bdb82020guhlq" path="res://assets/Buttons-Pop-up/UnclickedLong_Button.PNG" id="17_vyi2r"]
 [ext_resource type="Texture2D" uid="uid://beyo6spvk5nn0" path="res://assets/Buttons-Pop-up/ClickedLong_Button.PNG" id="18_43apn"]
@@ -29,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://bupr1p1vdm23f" path="res://assets/Buttons-Pop-up/ClickedSound_Button.PNG" id="27_4yeaq"]
 [ext_resource type="Texture2D" uid="uid://8paxwa6vsva5" path="res://assets/Buttons-Pop-up/UnclickedCloseButton.PNG" id="28_cvuvd"]
 [ext_resource type="Texture2D" uid="uid://chcc7c1qhjj4v" path="res://assets/Buttons-Pop-up/ClickedClose_Button.PNG" id="29_c5tqu"]
+[ext_resource type="Texture2D" uid="uid://d27b1bem3r1wq" path="res://assets/Buttons-Pop-up/Unclicked_Retry.PNG" id="30_ap1ke"]
+[ext_resource type="Texture2D" uid="uid://cvdfipcormi32" path="res://assets/Buttons-Pop-up/Clicked_Retry.PNG" id="31_piu8u"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lqtny"]
 texture = ExtResource("2_tejya")
@@ -166,11 +167,11 @@ texture_normal = ExtResource("13_x8nps")
 texture_pressed = ExtResource("14_xoj2h")
 
 [node name="GameOverControl" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("15_7j6vf")
 
 [node name="GameOverPanel" type="Panel" parent="GameOverControl"]
 visible = false
@@ -234,13 +235,13 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="YouWinControl" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="YouWinPanel" type="Panel" parent="YouWinControl"]
-visible = false
 z_index = 10
 layout_mode = 0
 offset_left = 263.0
@@ -370,6 +371,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_qi1lg")
 
 [node name="PauseLbl" type="Label" parent="PausePanel"]
+layout_mode = 0
 offset_left = 81.0
 offset_top = 132.0
 offset_right = 796.0
@@ -384,6 +386,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="ObjLbl" type="Label" parent="PausePanel"]
+layout_mode = 0
 offset_left = 195.0
 offset_top = 319.0
 offset_right = 469.0
@@ -395,6 +398,7 @@ text = "Objective"
 autowrap_mode = 3
 
 [node name="ObjLbl2" type="Label" parent="PausePanel"]
+layout_mode = 0
 offset_left = 195.0
 offset_top = 391.0
 offset_right = 681.0
@@ -406,6 +410,7 @@ text = "To win this round, accumulate 100 points within the given time"
 autowrap_mode = 3
 
 [node name="ScoreLabel" type="Label" parent="PausePanel"]
+layout_mode = 0
 offset_left = 195.0
 offset_top = 519.0
 offset_right = 709.0
@@ -430,6 +435,7 @@ texture_normal = ExtResource("13_x8nps")
 texture_pressed = ExtResource("14_xoj2h")
 
 [node name="Volume" type="TextureButton" parent="PausePanel"]
+layout_mode = 0
 offset_left = 321.0
 offset_top = 599.0
 offset_right = 545.0
@@ -441,6 +447,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="ResumeBtn" type="TextureButton" parent="PausePanel"]
+layout_mode = 0
 offset_left = 672.0
 offset_top = 21.0
 offset_right = 870.0
@@ -449,6 +456,16 @@ texture_normal = ExtResource("28_cvuvd")
 texture_pressed = ExtResource("29_c5tqu")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="RetryBtn" type="TextureButton" parent="PausePanel"]
+offset_left = 495.0
+offset_top = 599.0
+offset_right = 731.0
+offset_bottom = 819.0
+texture_normal = ExtResource("30_ap1ke")
+texture_pressed = ExtResource("31_piu8u")
+ignore_texture_size = true
+stretch_mode = 3
 
 [connection signal="pressed" from="PauseBtn" to="." method="_on_pause_btn_pressed"]
 [connection signal="pressed" from="GameOverControl/GameOverPanel/NewGameBtn" to="." method="_on_new_game_btn_pressed"]

@@ -66,6 +66,7 @@ func _ready() -> void:
 	
 	blur_effect = $ColorRect
 	blur_effect.visible = true
+	blur_effect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func toggle_pause():
 	is_paused = !is_paused
@@ -101,11 +102,11 @@ func update_timer(delta: float) -> void:
 	if time_left <= 0:
 		time_left = 0
 		game_active = false
-		$GameOverControl.show_game_over(score)
-		if has_node("GameOverLabel"):
-			$GameOverLabel.hide()
+		blur_effect.visible = true
+		$GameOverControl.show()  # Show the control node
+		$GameOverControl/GameOverPanel.show()  # Show its panel
 	$TimerLabel.text = "Time: " + str(int(time_left))
-
+	
 func update_indicator(delta: float) -> void:
 	if indicator_moving:
 		$PowerBarIndicator.position.x += indicator_speed * indicator_direction * delta
@@ -201,6 +202,7 @@ func complete_throw() -> void:
 		game_active = false
 		if has_node("GameOverLabel"):
 			$GameOverLabel.hide()
+		blur_effect.visible = true
 		$YouWinControl.show()
 		return
 	if has_node("TemporaryGarbage"):
@@ -245,7 +247,7 @@ func _on_back_btn_pressed() -> void:
 
 func _on_new_game_btn_pressed() -> void:
 	$ObjPanel.show()
-	
+	blur_effect.visible = true
 	# Reset game state
 	score = 0
 	time_left = 60
@@ -272,7 +274,8 @@ func _on_new_game_btn_pressed() -> void:
 	update_arrow_position()
 	
 	# Hide game over panel
-	$GameOverControl.hide_game_over()
+	$GameOverControl.hide()
+	$GameOverControl/GameOverPanel.hide()
 	$YouWinControl.hide()
 	
 	# Reset power bar

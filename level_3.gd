@@ -50,6 +50,8 @@ var blur_effect
 
 func _ready() -> void:
 	blur_effect = $ColorRect
+	blur_effect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
 	randomize_next_item()
 	populate_placeholder()
 	populate_sorting_tray()
@@ -102,9 +104,9 @@ func update_timer(delta: float) -> void:
 	if time_left <= 0:
 		time_left = 0
 		game_active = false
-		$GameOverControl.show_game_over(score)
-		if has_node("GameOverLabel"):
-			$GameOverLabel.hide()
+		blur_effect.visible = true
+		$GameOverControl.show()  
+		$GameOverControl/GameOverPanel.show()  
 	$TimerLabel.text = "Time: " + str(int(time_left))
 
 func update_indicator(delta: float) -> void:
@@ -201,6 +203,7 @@ func complete_throw() -> void:
 		game_active = false
 		if has_node("GameOverLabel"):
 			$GameOverLabel.hide()
+		blur_effect.visible = true
 		$YouWinControl.show()
 		return
 	if has_node("TemporaryGarbage"):
@@ -243,10 +246,10 @@ func _on_back_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/press_start.tscn")
 	pass # Replace with function body.
 
-
 func _on_new_game_btn_pressed() -> void:
 	$ObjPanel.show()
-	# Reset game state
+	blur_effect.visible = true
+	
 	score = 0
 	time_left = 60
 	game_active = true
@@ -272,7 +275,8 @@ func _on_new_game_btn_pressed() -> void:
 	update_arrow_position()
 	
 	# Hide game over panel
-	$GameOverControl.hide_game_over()
+	$GameOverControl.hide()
+	$GameOverControl/GameOverPanel.hide()
 	$YouWinControl.hide()
 	
 	# Reset power bar
