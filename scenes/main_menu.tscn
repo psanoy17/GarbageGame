@@ -98,6 +98,7 @@ offset_top = 885.0
 offset_right = 1068.0
 offset_bottom = 1087.0
 size_flags_vertical = 3
+toggle_mode = true
 texture_normal = ExtResource("5_kw10t")
 texture_pressed = ExtResource("6_1h7o6")
 ignore_texture_size = true
@@ -119,4 +120,5 @@ stream = ExtResource("12_rfebq")
 
 [connection signal="pressed" from="Panel/PressStart" to="." method="_on_press_start_pressed"]
 [connection signal="pressed" from="Panel/AboutGame" to="." method="_on_about_game_pressed"]
+[connection signal="toggled" from="Panel/Volume" to="." method="_on_volume_toggled"]
 [connection signal="pressed" from="Panel/Exit" to="." method="_on_exit_pressed"]

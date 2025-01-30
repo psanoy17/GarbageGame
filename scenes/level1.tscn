@@ -448,6 +448,7 @@ offset_top = 599.0
 offset_right = 545.0
 offset_bottom = 818.0
 size_flags_vertical = 3
+toggle_mode = true
 texture_normal = ExtResource("26_e0b1d")
 texture_pressed = ExtResource("27_u4jhy")
 ignore_texture_size = true
@@ -500,5 +501,6 @@ stream = ExtResource("36_0vdmj")
 [connection signal="pressed" from="YouWinControl/YouWinPanel/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
 [connection signal="pressed" from="ObjPanel/ClickedBtn" to="." method="_on_clicked_btn_pressed"]
 [connection signal="pressed" from="PausePanel/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="toggled" from="PausePanel/Volume" to="." method="_on_volume_toggled"]
 [connection signal="pressed" from="PausePanel/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="PausePanel/RetryBtn" to="." method="_on_retry_btn_pressed"]

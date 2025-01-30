@@ -55,6 +55,8 @@ var blur_effect
 @onready var click_sound = $ClickSound
 @onready var defeat_sound = $DefeatSound
 
+@onready var volume_button = $PausePanel/Volume
+
 func _ready() -> void:
 	blur_effect = $ColorRect
 	blur_effect.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -76,6 +78,10 @@ func _ready() -> void:
 	
 	blur_effect = $ColorRect	
 	blur_effect.visible = true
+	
+	volume_button.set_block_signals(true)
+	volume_button.button_pressed = Global.is_muted
+	volume_button.set_block_signals(false)
 
 func toggle_pause():
 	is_paused = !is_paused
@@ -262,6 +268,7 @@ func update_arrow_position() -> void:
 
 func _on_back_btn_pressed() -> void:
 	click_sound.play()
+	await click_sound.finished 
 	get_tree().change_scene_to_file("res://scenes/press_start.tscn")
 	pass # Replace with function body.
 
@@ -341,3 +348,8 @@ func _on_retry_btn_pressed() -> void:
 	$PausePanel.hide()
 	_on_new_game_btn_pressed()
 	pass 
+
+
+func _on_volume_toggled(toggled_on: bool) -> void:
+	Global.toggle_volume()
+	pass # Replace with function body.
