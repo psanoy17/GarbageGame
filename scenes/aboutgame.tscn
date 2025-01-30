@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b4l00nn1my8ox"]
+[gd_scene load_steps=26 format=3 uid="uid://b4l00nn1my8ox"]
 
 [ext_resource type="Script" path="res://scenes/aboutgame.gd" id="1_6vbga"]
 [ext_resource type="Texture2D" uid="uid://3alwm13wfcct" path="res://assets/Backgrounds/Background_Asset2.PNG" id="1_ctqp3"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://5pxemqbujv6v" path="res://assets/Props-Objects/residual.png" id="20_1gisk"]
 [ext_resource type="Texture2D" uid="uid://gmwqr4vx0b4g" path="res://assets/Props-Objects/line.png" id="21_pfka1"]
 [ext_resource type="Texture2D" uid="uid://d3lclhnqwrt07" path="res://assets/Props-Objects/hazardous.png" id="22_jhhj7"]
+[ext_resource type="AudioStream" uid="uid://dy2w5pdwni7qs" path="res://assets/audio/click3-VEED (1).mp3" id="23_4agcg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qpjxb"]
 texture = ExtResource("1_ctqp3")
@@ -1268,6 +1269,9 @@ texture_normal = ExtResource("2_q808y")
 texture_pressed = ExtResource("3_4ng5l")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_4agcg")
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="MechanicsBtn" to="." method="_on_mechanics_btn_pressed"]

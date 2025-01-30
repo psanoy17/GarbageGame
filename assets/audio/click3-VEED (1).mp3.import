@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dy2w5pdwni7qs"
+path="res://.godot/imported/click3-VEED (1).mp3-4952cf6c5f7810baae82655988155d96.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/click3-VEED (1).mp3"
+dest_files=["res://.godot/imported/click3-VEED (1).mp3-4952cf6c5f7810baae82655988155d96.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

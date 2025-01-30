@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://lwf5widdihmj"]
+[gd_scene load_steps=13 format=3 uid="uid://lwf5widdihmj"]
 
 [ext_resource type="Texture2D" uid="uid://3alwm13wfcct" path="res://assets/Backgrounds/Background_Asset2.PNG" id="1_8yjgs"]
 [ext_resource type="Script" path="res://scenes/press_start.gd" id="1_py4og"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bdb82020guhlq" path="res://assets/Buttons-Pop-up/UnclickedLong_Button.PNG" id="6_g7xgq"]
 [ext_resource type="Texture2D" uid="uid://beyo6spvk5nn0" path="res://assets/Buttons-Pop-up/ClickedLong_Button.PNG" id="7_a0dst"]
 [ext_resource type="FontFile" uid="uid://5kanbd1bjglj" path="res://Ranyth_upperlower.ttf" id="9_txmkf"]
+[ext_resource type="AudioStream" uid="uid://dy2w5pdwni7qs" path="res://assets/audio/click3-VEED (1).mp3" id="10_1060x"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_26sbf"]
 texture = ExtResource("1_8yjgs")
@@ -168,6 +169,9 @@ theme_override_font_sizes/font_size = 60
 text = "GARBAGE GURU"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_1060x")
 
 [connection signal="pressed" from="Background/Panel/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="Background/Panel/TextureButton" to="." method="_on_texture_button_pressed"]

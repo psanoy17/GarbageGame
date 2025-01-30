@@ -48,6 +48,13 @@ var throw_duration = 0.8  # Increased for smoother animation
 var is_paused = false
 var blur_effect
 
+@onready var throw_sound = $ThrowSound
+@onready var victory_sound = $VictorySound
+@onready var correct_bin_sound = $CorrectBinSound
+@onready var wrong_sound = $WrongThrowOrBinSound
+@onready var click_sound = $ClickSound
+@onready var defeat_sound = $DefeatSound
+
 func toggle_pause():
 	is_paused = !is_paused
 	if is_paused:
@@ -105,6 +112,7 @@ func update_timer(delta: float) -> void:
 		blur_effect.visible = true
 		$GameOverControl.show() 
 		$GameOverControl/GameOverPanel.show()  
+		defeat_sound.play()
 	$TimerLabel.text = "Time: " + str(int(time_left))
 
 func update_indicator(delta: float) -> void:
@@ -168,6 +176,8 @@ func start_throw_animation(is_good_power: bool) -> void:
 	throwing = true
 	throw_progress = 0.0
 	throw_start_pos = $PlaceholderAsset.position
+	throw_sound.play()
+	
 	for child in $PlaceholderAsset.get_children():
 		child.queue_free()
 	var garbage_sprite = Sprite2D.new()
@@ -191,19 +201,27 @@ func complete_throw() -> void:
 	var prop_category = props[current_index]["category"]
 	var garbage_sprite = get_node("TemporaryGarbage")
 	var is_good_power = garbage_sprite.get_meta("good_power")
+	
 	if is_good_power and selected_bin == prop_category:
 		score += 10
-	elif is_good_power and score >= 5:
-		score -= 5
+		correct_bin_sound.play()
+	elif is_good_power:  # If power is good but wrong bin
+		if score >= 5:
+			score -= 5
+		wrong_sound.play()  # Play sound regardless of score
+	
 	score = max(score, 0)
 	$ScoreLabel.text = "Score: " + str(score)
+	
 	if score >= 20:
 		game_active = false
 		if has_node("GameOverLabel"):
 			$GameOverLabel.hide()
 		blur_effect.visible = true
 		$YouWinControl.show()
+		victory_sound.play()
 		return
+		
 	if has_node("TemporaryGarbage"):
 		get_node("TemporaryGarbage").queue_free()
 	move_to_next_item()
@@ -241,10 +259,12 @@ func update_arrow_position() -> void:
 	$Control/Arrow.position.x = bins[selected_bin].position.x
 
 func _on_back_btn_pressed() -> void:
+	click_sound.play()
 	get_tree().change_scene_to_file("res://scenes/press_start.tscn")
 	pass # Replace with function body.
 
 func _on_new_game_btn_pressed() -> void:
+	click_sound.play()
 	$ObjPanel.show()
 	blur_effect.visible = true
 	
@@ -285,7 +305,7 @@ func _on_new_game_btn_pressed() -> void:
 	disable_game_controls()
 
 func _on_clicked_btn_pressed() -> void:
-	# Hide the objective panel
+	click_sound.play()
 	$ObjPanel.hide()
 	
 	# Enable game controls
@@ -303,15 +323,18 @@ func _on_clicked_btn_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_pause_btn_pressed() -> void:
+	click_sound.play()
 	toggle_pause()
 	pass # Replace with function body.
 
 func _on_resume_btn_pressed() -> void:
+	click_sound.play()
 	toggle_pause()
 	pass # Replace with function body.
 
 
 func _on_retry_btn_pressed() -> void:
+	click_sound.play()
 	$PausePanel.hide()
 	_on_new_game_btn_pressed()
 	pass # Replace with function body.
