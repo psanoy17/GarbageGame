@@ -221,7 +221,7 @@ func complete_throw() -> void:
 	score = max(score, 0)
 	$ScoreLabel.text = "Score: " + str(score)
 	
-	if score >= 20:
+	if score >= 100:
 		game_active = false
 		if has_node("GameOverLabel"):
 			$GameOverLabel.hide()

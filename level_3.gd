@@ -38,7 +38,7 @@ var can_throw = true
 
 # Game state variables
 var score = 0
-var time_left = 60  
+var time_left = 30  
 var game_active = true
 var throwing = false
 var throw_start_pos = Vector2.ZERO
@@ -67,7 +67,7 @@ func _ready() -> void:
 	update_arrow_position()
 	$PowerBarIndicator.position.x = power_bar_range.x
 	$ScoreLabel.text = "Score: 0"
-	$TimerLabel.text = "Time: 60"
+	$TimerLabel.text = "Time: 30"
 	# Set initial position of placeholder
 	$PlaceholderAsset.position = Vector2(950, 950)
 	throw_start_pos = $PlaceholderAsset.position
@@ -221,7 +221,7 @@ func complete_throw() -> void:
 	score = max(score, 0)
 	$ScoreLabel.text = "Score: " + str(score)
 	
-	if score >= 20:
+	if score >= 100:
 		game_active = false
 		if has_node("GameOverLabel"):
 			$GameOverLabel.hide()
@@ -278,13 +278,13 @@ func _on_new_game_btn_pressed() -> void:
 	blur_effect.visible = true
 	
 	score = 0
-	time_left = 60
+	time_left = 30
 	game_active = true
 	current_index = 0
 	
 	# Reset UI
 	$ScoreLabel.text = "Score: 0"
-	$TimerLabel.text = "Time: 60"
+	$TimerLabel.text = "Time: 30"
 	
 	# Clean up any existing temporary garbage sprite
 	if has_node("TemporaryGarbage"):
@@ -323,9 +323,9 @@ func _on_clicked_btn_pressed() -> void:
 	
 	# Reset the game state
 	score = 0
-	time_left = 60
+	time_left = 30
 	$ScoreLabel.text = "Score: 0"
-	$TimerLabel.text = "Time: 60"
+	$TimerLabel.text = "Time: 30"
 	
 	var blur_effect = $ColorRect
 	
